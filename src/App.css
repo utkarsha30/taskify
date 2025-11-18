@@ -23,4 +23,7 @@
     margin: 15px 0;
     font-size: 35px;
   }
+  wa-input {
+    width: 80%;
+  }
 }
