@@ -57,17 +57,7 @@ wa-input {
   font-size: 20px;
   cursor: pointer;
 }
-@media (max-width: 1200px) {
-  .todos_single {
-    width: 40%;
-  }
-  form.input {
-    width: 100%;
-  }
-  wa-input {
-    width: 60%;
-  }
-}
+
 @media (max-width: 800px) {
   form.input {
     width: 100%;
