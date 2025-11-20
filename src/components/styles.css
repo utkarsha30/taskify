@@ -34,29 +34,17 @@ wa-input {
   width: 100%;
   border-radius: 5px;
   padding: 20px; */
- 
+
   background-color: yellowgreen;
   /* align-items: center; */
 }
-.todos_single_text {
-  flex: 1;
-  padding: 5px;
-  border: none;
-  font-size: 20px;
-}
-.todos_single_text:focus {
-  outline: none;
-}
+
 @media (max-width: 800px) {
   form.input {
     width: 100%;
   }
   wa-input {
     width: 80%;
-  }
-
-  .todos_single {
-    width: 100%;
   }
   .todos {
     width: 95%;

@@ -44,48 +44,48 @@ const TodoCard = ({ todo, todos, setTodos }: Props) => {
 
   return (
     <form
-      className="todos_single "
+      className="todos_single  wa-flank:end"
       onSubmit={(e) => handleEdit(e, todo.id)}
-      style={{ width: "100%" }}
+      style={{ width: "100%", height: "4rem", padding: "0 1rem" }}
     >
-      <div className="wa-gap-s">
+      <div>
         {edit ? (
           <wa-input
             ref={setInputEl}
             value={editTodo}
             onchange={(e: any) => setEditTodo(e.target.value)}
-            className="todos_single_text"
+            style={{ width: "100%" }}
             pill
           />
         ) : todo.isDone ? (
-          <s className="todos_single_text">{todo.todo}</s>
+          <s>{todo.todo}</s>
         ) : (
-          <span className="todos_single_text">{todo.todo}</span>
+          <span>{todo.todo}</span>
         )}
+      </div>
 
-        <div className="wa-cluster wa-justify-content-center wa-align-items-center wa-gap-m">
-          <span
-            className="wa-cursor-pointer"
-            style={{ fontSize: "1.5rem" }}
-            onClick={() => !edit && !todo.isDone && setEdit(true)}
-          >
-            <wa-icon family="solid" name="pencil" />
-          </span>
-          <span
-            className="wa-cursor-pointer"
-            style={{ fontSize: "1.5rem" }}
-            onClick={() => handleDelete(todo.id)}
-          >
-            <wa-icon family="solid" name="trash" />
-          </span>
-          <span
-            className="wa-cursor-pointer"
-            style={{ fontSize: "1.5rem" }}
-            onClick={() => handleDone(todo.id)}
-          >
-            <wa-icon family="solid" name="check" />
-          </span>
-        </div>
+      <div className="wa-cluster wa-justify-content-center wa-align-items-center wa-gap-m">
+        <span
+          className="wa-cursor-pointer"
+          style={{ fontSize: "1.5rem" }}
+          onClick={() => !edit && !todo.isDone && setEdit(true)}
+        >
+          <wa-icon family="solid" name="pencil" />
+        </span>
+        <span
+          className="wa-cursor-pointer"
+          style={{ fontSize: "1.5rem" }}
+          onClick={() => handleDelete(todo.id)}
+        >
+          <wa-icon family="solid" name="trash" />
+        </span>
+        <span
+          className="wa-cursor-pointer"
+          style={{ fontSize: "1.5rem" }}
+          onClick={() => handleDone(todo.id)}
+        >
+          <wa-icon family="solid" name="check" />
+        </span>
       </div>
     </form>
   );
