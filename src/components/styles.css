@@ -29,15 +29,6 @@ wa-input {
   width: 90%;
   flex-wrap: wrap;
 }
-.todos_single {
-  /* display: flex;
-  width: 100%;
-  border-radius: 5px;
-  padding: 20px; */
-
-  background-color: yellowgreen;
-  /* align-items: center; */
-}
 
 @media (max-width: 800px) {
   form.input {

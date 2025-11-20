@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles.css";
 import "@awesome.me/webawesome/dist/components/button/button.js";
 import "@awesome.me/webawesome/dist/components/input/input.js";
 

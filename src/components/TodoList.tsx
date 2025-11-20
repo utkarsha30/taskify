@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles.css";
 import { Todo } from "../model";
 import TodoCard from "./TodoCard";
 interface Props {

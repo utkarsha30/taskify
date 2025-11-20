@@ -46,7 +46,7 @@ const TodoCard = ({ todo, todos, setTodos }: Props) => {
     <form
       className="todos_single  wa-flank:end"
       onSubmit={(e) => handleEdit(e, todo.id)}
-      style={{ width: "100%", height: "4rem", padding: "0 1rem" }}
+      style={{ width: "100%", height: "4rem", padding: "0 1rem" ,  backgroundColor: "yellowgreen" }}
     >
       <div>
         {edit ? (
