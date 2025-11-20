@@ -4,6 +4,7 @@ import { Todo } from "./model";
 import InputField from "./components/InputField";
 import TodoList from "./components/TodoList";
 import "@awesome.me/webawesome/dist/webawesome.js";
+import "@awesome.me/webawesome/dist/styles/utilities.css";
 
 const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
@@ -19,9 +20,7 @@ const App: React.FC = () => {
   console.log(todos);
   return (
     <div className="App">
-      {/* Add text color to be white */}
-
-      <span className="wa-stack wa-align-items-center wa-font-size-3xl wa-font-weight-bold " >
+      <span className="wa-stack wa-align-items-center wa-font-size-3xl wa-font-weight-bold ">
         Taskify
       </span>
       <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />

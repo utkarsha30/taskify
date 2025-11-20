@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Todo } from "../model";
-// import "./styles.css";
+import WaInput from "@awesome.me/webawesome/dist/components/input/input";
+
 type Props = {
   todo: Todo;
   todos: Todo[];
@@ -8,8 +9,10 @@ type Props = {
 };
 
 const TodoCard = ({ todo, todos, setTodos }: Props) => {
-  const [edit, setEdit] = React.useState<boolean>(false);
+  const [edit, setEdit] = useState<boolean>(false);
   const [editTodo, setEditTodo] = useState<string>(todo.todo);
+  const [inputEl, setInputEl] = useState<WaInput | null>(null);
+
   const handleDone = (id: number) => {
     setTodos(
       todos.map((todo) =>
@@ -17,9 +20,11 @@ const TodoCard = ({ todo, todos, setTodos }: Props) => {
       )
     );
   };
+
   const handleDelete = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
+
   const handleEdit = (e: React.FormEvent, id: number) => {
     e.preventDefault();
     setTodos(
@@ -27,51 +32,60 @@ const TodoCard = ({ todo, todos, setTodos }: Props) => {
     );
     setEdit(false);
   };
-  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Focus safely when edit mode is activated
   useEffect(() => {
-    inputRef.current?.focus();
-  }, [edit]);
+    if (edit && inputEl) {
+      // Wait for element to be fully upgraded
+      const timeout = setTimeout(() => inputEl.focus?.(), 0);
+      return () => clearTimeout(timeout);
+    }
+  }, [edit, inputEl]);
 
   return (
-    <form className="todos_single" onSubmit={(e) => handleEdit(e, todo.id)}>
-      {edit ? (
-        <input
-          ref={inputRef}
-          value={editTodo}
-          onChange={(e) => setEditTodo(e.target.value)}
-          className="todos_single_text"
-        />
-      ) : todo.isDone ? (
-        <s className="todos_single_text">{todo.todo}</s>
-      ) : (
-        <span className="todos_single_text">{todo.todo}</span>
-      )}
-      <div className="wa-cluster wa-justify-content-center wa-align-items-center wa-gap-m">
-        <span
-          className="wa-cursor-pointer"
-          style={{ fontSize: "1.5rem" }}
-          onClick={() => {
-            if (!edit && !todo.isDone) {
-              setEdit(!edit);
-            }
-          }}
-        >
-          <wa-icon family="solid" name="pencil" />
-        </span>
-        <span
-          className="wa-cursor-pointer"
-          style={{ fontSize: "1.5rem" }}
-          onClick={() => handleDelete(todo.id)}
-        >
-          <wa-icon family="solid" name="trash" />
-        </span>
-        <span
-          className="wa-cursor-pointer"
-          style={{ fontSize: "1.5rem" }}
-          onClick={() => handleDone(todo.id)}
-        >
-          <wa-icon family="solid" name="check" />
-        </span>
+    <form
+      className="todos_single "
+      onSubmit={(e) => handleEdit(e, todo.id)}
+      style={{ width: "100%" }}
+    >
+      <div className="wa-gap-s">
+        {edit ? (
+          <wa-input
+            ref={setInputEl}
+            value={editTodo}
+            onchange={(e: any) => setEditTodo(e.target.value)}
+            className="todos_single_text"
+            pill
+          />
+        ) : todo.isDone ? (
+          <s className="todos_single_text">{todo.todo}</s>
+        ) : (
+          <span className="todos_single_text">{todo.todo}</span>
+        )}
+
+        <div className="wa-cluster wa-justify-content-center wa-align-items-center wa-gap-m">
+          <span
+            className="wa-cursor-pointer"
+            style={{ fontSize: "1.5rem" }}
+            onClick={() => !edit && !todo.isDone && setEdit(true)}
+          >
+            <wa-icon family="solid" name="pencil" />
+          </span>
+          <span
+            className="wa-cursor-pointer"
+            style={{ fontSize: "1.5rem" }}
+            onClick={() => handleDelete(todo.id)}
+          >
+            <wa-icon family="solid" name="trash" />
+          </span>
+          <span
+            className="wa-cursor-pointer"
+            style={{ fontSize: "1.5rem" }}
+            onClick={() => handleDone(todo.id)}
+          >
+            <wa-icon family="solid" name="check" />
+          </span>
+        </div>
       </div>
     </form>
   );

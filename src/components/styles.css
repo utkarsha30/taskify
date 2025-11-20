@@ -30,14 +30,13 @@ wa-input {
   flex-wrap: wrap;
 }
 .todos_single {
-  display: flex;
+  /* display: flex;
   width: 100%;
-  margin: 10px;
   border-radius: 5px;
-  padding: 20px;
-  margin-top: 15px;
+  padding: 20px; */
+ 
   background-color: yellowgreen;
-  align-items: center;
+  /* align-items: center; */
 }
 .todos_single_text {
   flex: 1;
@@ -48,16 +47,6 @@ wa-input {
 .todos_single_text:focus {
   outline: none;
 }
-.colored-box {
-  background-color: yellowgreen;
-}
-
-/* .icon {
-  margin: 10px;
-  font-size: 20px;
-  cursor: pointer;
-} */
-
 @media (max-width: 800px) {
   form.input {
     width: 100%;
