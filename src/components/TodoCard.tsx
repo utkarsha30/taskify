@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Todo } from "../model";
-import "./styles.css";
+// import "./styles.css";
 type Props = {
   todo: Todo;
   todos: Todo[];

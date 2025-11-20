@@ -1,8 +1,7 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./styles.css";
 import "@awesome.me/webawesome/dist/components/button/button.js";
 import "@awesome.me/webawesome/dist/components/input/input.js";
-import "@awesome.me/webawesome/dist/components/callout/callout.js";
 
 interface Props {
   todo: string;
@@ -11,24 +10,39 @@ interface Props {
 }
 
 const InputField: React.FC<Props> = ({ todo, setTodo, handleAdd }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+  let inputEl: any = null;
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleAdd(e);
+    inputEl?.blur();
+    if (inputEl) inputEl.value = "";
+    setTodo("");
+  };
+
   return (
     <div className="overlay-wrapper">
       <form
         className="input"
-        tabIndex={0}
         onSubmit={(e) => {
+          e.preventDefault();
           handleAdd(e);
-          inputRef.current?.blur();
+          inputEl?.blur();
+          setTodo("");
         }}
       >
-        <input
-          ref={inputRef}
+        <wa-input
+          ref={(el) => (inputEl = el)}
           value={todo}
-          onInput={(e: any) => setTodo(e.target.value)}
+          oninput={(e: any) => setTodo(e.target.value)}
           placeholder="Enter a To Do"
-        />
-        <button type="submit">Go</button>
+          size="large"
+          pill
+        >
+          <wa-button slot="end" type="submit" variant="brand" pill>
+            Go
+          </wa-button>
+        </wa-input>
       </form>
     </div>
   );

@@ -1,23 +1,28 @@
-.input {
+.overlay-wrapper {
   width: 100%;
+  display: flex;
+  justify-content: center;
   position: relative;
-  align-items: center;
-  z-index: 2;
+  z-index: 0;
 }
-form > * + * {
-  display: block;
-  --display: block;
-  width: fit-content;
-  margin-block-start: var(--wa-space-m);
-}
+
 .overlay-wrapper:focus-within::before {
   content: "";
   position: fixed;
-  inset: 0; /* full screen */
-  background: rgba(0, 0, 0, 0.4); /* dim effect */
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
-  z-index: 1;
+  z-index: 10;
 }
+form.input,
+wa-input {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 20;
+}
+
 .todo-list {
   display: flex;
   justify-content: space-evenly;
@@ -26,7 +31,7 @@ form > * + * {
 }
 .todos_single {
   display: flex;
-  width: 30%;
+  width: 100%;
   margin: 10px;
   border-radius: 5px;
   padding: 20px;
@@ -43,21 +48,34 @@ form > * + * {
 .todos_single_text:focus {
   outline: none;
 }
+.colored-box {
+  background-color: yellowgreen;
+}
 
 .icon {
   margin: 10px;
   font-size: 20px;
   cursor: pointer;
 }
-@media (maz-width: 1200px) {
+@media (max-width: 1200px) {
   .todos_single {
     width: 40%;
   }
+  form.input {
+    width: 100%;
+  }
+  wa-input {
+    width: 60%;
+  }
 }
 @media (max-width: 800px) {
-  .input {
-    width: 95%;
+  form.input {
+    width: 100%;
   }
+  wa-input {
+    width: 80%;
+  }
+
   .todos_single {
     width: 100%;
   }

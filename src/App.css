@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
 
-.App {
+/* .App {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -8,7 +8,16 @@
   align-items: center;
   background-color: #2f74c0;
   font-family: "Neucha", cursive;
+} */
+
+.App {
+  background-color: #2f74c0;
+  font-family: "Neucha", cursive;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
 }
+
 .heading {
   text-transform: uppercase;
   font-size: 40px;
@@ -22,8 +31,5 @@
   .heading {
     margin: 15px 0;
     font-size: 35px;
-  }
-  wa-input {
-    width: 80%;
   }
 }
