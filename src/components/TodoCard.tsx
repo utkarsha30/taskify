@@ -46,23 +46,33 @@ const TodoCard = ({ todo, todos, setTodos }: Props) => {
       ) : (
         <span className="todos_single_text">{todo.todo}</span>
       )}
-
-      <span
-        className="icon"
-        onClick={() => {
-          if (!edit && !todo.isDone) {
-            setEdit(!edit);
-          }
-        }}
-      >
-        <i className="fa fa-pencil" aria-hidden="true"></i>
-      </span>
-      <span className="icon" onClick={() => handleDelete(todo.id)}>
-        <i className="fa fa-trash" aria-hidden="true"></i>
-      </span>
-      <span className="icon" onClick={() => handleDone(todo.id)}>
-        <i className="fa fa-check" aria-hidden="true"></i>
-      </span>
+      <div className="wa-cluster wa-justify-content-center wa-align-items-center wa-gap-m">
+        <span
+          className="wa-cursor-pointer"
+          style={{ fontSize: "1.5rem" }}
+          onClick={() => {
+            if (!edit && !todo.isDone) {
+              setEdit(!edit);
+            }
+          }}
+        >
+          <wa-icon family="solid" name="pencil" />
+        </span>
+        <span
+          className="wa-cursor-pointer"
+          style={{ fontSize: "1.5rem" }}
+          onClick={() => handleDelete(todo.id)}
+        >
+          <wa-icon family="solid" name="trash" />
+        </span>
+        <span
+          className="wa-cursor-pointer"
+          style={{ fontSize: "1.5rem" }}
+          onClick={() => handleDone(todo.id)}
+        >
+          <wa-icon family="solid" name="check" />
+        </span>
+      </div>
     </form>
   );
 };

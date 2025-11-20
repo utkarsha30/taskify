@@ -52,11 +52,11 @@ wa-input {
   background-color: yellowgreen;
 }
 
-.icon {
+/* .icon {
   margin: 10px;
   font-size: 20px;
   cursor: pointer;
-}
+} */
 
 @media (max-width: 800px) {
   form.input {
