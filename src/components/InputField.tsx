@@ -21,15 +21,10 @@ const InputField: React.FC<Props> = ({ todo, setTodo, handleAdd }) => {
   };
 
   return (
-    <div className="overlay-wrapper">
+
       <form
         className="input"
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleAdd(e);
-          inputEl?.blur();
-          setTodo("");
-        }}
+        onSubmit={onSubmit}
       >
         <wa-input
           ref={(el) => (inputEl = el)}
@@ -44,7 +39,7 @@ const InputField: React.FC<Props> = ({ todo, setTodo, handleAdd }) => {
           </wa-button>
         </wa-input>
       </form>
-    </div>
+
   );
 };
 
