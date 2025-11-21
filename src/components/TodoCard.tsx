@@ -70,13 +70,23 @@ const TodoCard = ({ todo, todos, setTodos }: Props) => {
       </div>
 
       <div className="wa-cluster wa-justify-content-center wa-align-items-center wa-gap-m">
-        <span
-          className="wa-cursor-pointer"
-          style={{ fontSize: "1.5rem" }}
-          onClick={() => !edit && !todo.isDone && setEdit(true)}
-        >
-          <wa-icon family="solid" name="pencil" />
-        </span>
+        {edit ? (
+          <span
+            className="wa-cursor-pointer"
+            style={{ fontSize: "1.5rem" }}
+            onClick={(e) => handleEdit(e as any, todo.id)}
+          >
+            <wa-icon family="solid" name="save" />
+          </span>
+        ) : (
+          <span
+            className="wa-cursor-pointer"
+            style={{ fontSize: "1.5rem" }}
+            onClick={() =>!edit && !todo.isDone && setEdit(true)}
+          >
+            <wa-icon family="solid" name="pencil" />
+          </span>
+        )}
         <span
           className="wa-cursor-pointer"
           style={{ fontSize: "1.5rem" }}
